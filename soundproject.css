@@ -1,0 +1,26 @@
+.button-wrapper{
+	border: 2px solid green;
+	background-color: grey;
+	width: 200px;
+	height: 200px;
+}
+
+#audio-button{
+	margin: 10px;
+	width: 50%;
+	height: 50%;
+	background-color: rgba(1, 132, 132, 0.4);
+	border: none;
+	color: #49fcb4;
+	text-shadow: .08vw .07vw black;
+}
+
+#audio-button:active {
+  	padding: 0px;
+  	background-color: rgba(0,0,0,0.5);
+}
+
+#audio-button:focus {
+	outline: none;
+	text-shadow: .08vw .07vw white;
+}
