@@ -1,3 +1,9 @@
+@font-face {
+    font-family: DDIN;
+    src: url(D-DIN.otf);
+}
+
+/**
 .button-wrapper{
 	border: 2px solid green;
 	background-color: grey;
@@ -23,4 +29,54 @@
 #audio-button:focus {
 	outline: none;
 	text-shadow: .08vw .07vw white;
+} **/
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+header, footer {
+	background-color: #61c4d0;
+	height: 10vh;
+	display: flex;
+  	flex-flow: row nowrap;
+  	justify-content: space-around;
+  	align-items: center;
+  	font-family: DDIN;
+  	font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+main {
+	background-color: #d3e7ff;
+	height: 80vh;
+	display: flex;
+  	flex-flow: row nowrap;
+  	justify-content: space-around;
+  	align-items: center;
+}
+
+#piano-container {
+	background-color: #A9A9A9;
+	height: 400px;
+	width: 700px;
+	display: flex;
+  	flex-flow: row nowrap;
+  	justify-content: space-around;
+  	align-items: center;
+}
+
+.piano-keys{
+	background-color: #00CED1;
+	height: 200px;
+	width: 50px;
 }
