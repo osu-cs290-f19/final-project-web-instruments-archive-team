@@ -56,6 +56,13 @@ a:hover {
   text-decoration: underline;
 }
 
+h1 {
+	color: white;
+	font-family: DDIN;
+	text-shadow: 2px 2px 5px #ff001f;
+	font-size: 50px;
+}
+
 main {
 	background-color: #d3e7ff;
 	height: 80vh;
@@ -66,17 +73,27 @@ main {
 }
 
 #piano-container {
-	background-color: #A9A9A9;
+	background: linear-gradient(0deg, rgba(189,200,228,1) 0%, rgba(14,24,41,0.5) 100%);
+	border-radius: 50px;
+	box-shadow: 5px 10px 18px #10182b;
 	height: 400px;
-	width: 700px;
+	width: 900px;
 	display: flex;
   	flex-flow: row nowrap;
   	justify-content: space-around;
   	align-items: center;
 }
 
-.piano-keys{
+.piano-keys {
 	background-color: #00CED1;
+	border: outset;
+	height: 200px;
+	width: 50px;
+}
+
+.piano-keys-sharp {
+	background-color: #fff;
+	border: outset;
 	height: 200px;
 	width: 50px;
 }
