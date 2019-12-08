@@ -44,7 +44,8 @@ header, footer {
   	justify-content: space-around;
   	align-items: center;
   	font-family: DDIN;
-  	font-size: 20px;
+  	font-size: 30px;
+  	font-weight: bold;
 }
 
 a {
@@ -72,10 +73,15 @@ main {
   	align-items: center;
 }
 
+main img{
+	width: 70%;
+	height: 100%;
+}
+
 #piano-container {
-	background: linear-gradient(0deg, rgba(189,200,228,1) 0%, rgba(14,24,41,0.5) 100%);
+	background: #fff;
 	border-radius: 50px;
-	box-shadow: 5px 10px 18px #10182b;
+	box-shadow: 5px 10px 18px #ff001f;
 	height: 400px;
 	width: 900px;
 	display: flex;
@@ -92,7 +98,7 @@ main {
 }
 
 .piano-keys-sharp {
-	background-color: #fff;
+	background-color: rgba(189,200,228,1);
 	border: outset;
 	height: 200px;
 	width: 50px;
