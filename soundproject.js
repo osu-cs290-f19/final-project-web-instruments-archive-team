@@ -47,21 +47,82 @@ function playSound(){
 }
 
 
-//current problem: a then d in quick succession leads to audible audio chop
+
+
 
 var lastActive = "none";
 
 document.addEventListener('keydown', (e) => {
-   if (e.code === "KeyA"){
-   		if( lastActive != 'KeyA'){
+   if (e.code === "KeyQ"){//1
+   		if( lastActive != 'KeyQ'){
    			setSound('audio1');	
-   			lastActive = 'KeyA';
+   			lastActive = 'KeyQ';
    		}
    		playSound();
-   } else if (e.code === "KeyD"){
-   		if( lastActive != 'KeyD'){
+   } else if (e.code === "KeyW"){//2 
+   		if( lastActive != 'KeyW'){
    			setSound('audio2');	
-   			lastActive = 'KeyD';
+   			lastActive = 'KeyW';
+   		}
+   		playSound();
+   } else if (e.code === "KeyE"){//3
+   		if( lastActive != 'KeyE'){
+   			setSound('audio3');	
+   			lastActive = 'KeyE';
+   		}
+   		playSound();
+   } else if (e.code === "KeyR"){//4
+   		if( lastActive != 'KeyR'){
+   			setSound('audio4');	
+   			lastActive = 'KeyR';
+   		}
+   		playSound();
+   } else if (e.code === "KeyT"){//5
+   		if( lastActive != 'KeyT'){
+   			setSound('audio5');	
+   			lastActive = 'KeyT';
+   		}
+   		playSound();
+   } else if (e.code === "KeyY"){//6
+   		if( lastActive != 'KeyY'){
+   			setSound('audio6');	
+   			lastActive = 'KeyY';
+   		}
+   		playSound();
+   } else if (e.code === "KeyU"){//7
+   		if( lastActive != 'KeyU'){
+   			setSound('audio7');	
+   			lastActive = 'KeyU';
+   		}
+   		playSound();
+   } else if (e.code === "KeyI"){//8
+   		if( lastActive != 'KeyI'){
+   			setSound('audio8');	
+   			lastActive = 'KeyI';
+   		}
+   		playSound();
+   } else if (e.code === "KeyO"){//9
+   		if( lastActive != 'KeyO'){
+   			setSound('audio9');	
+   			lastActive = 'KeyO';
+   		}
+   		playSound();
+   } else if (e.code === "KeyP"){//10
+   		if( lastActive != 'KeyP'){
+   			setSound('audio10');	
+   			lastActive = 'KeyP';
+   		}
+   		playSound();
+   } else if (e.code === "BracketLeft"){//11
+   		if( lastActive != 'BracketLeft'){
+   			setSound('audio11');	
+   			lastActive = 'BracketLeft';
+   		}
+   		playSound();
+   } else if (e.code === "BracketRight"){//11
+   		if( lastActive != 'BracketRight'){
+   			setSound('audio12');	
+   			lastActive = 'BracketRight';
    		}
    		playSound();
    }
