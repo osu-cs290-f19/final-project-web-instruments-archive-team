@@ -1,4 +1,4 @@
 Juichi: Create post middleware function to handle post requests from the instrument client-js. Rename Scores to Recordings. Fix css search bar in Recordings page and flexboxes.
 Sai: Further format the instrument posts and recordings in css. 
 Felix: Handling the post request of instrument recordings and sending to server.js. Use handlebar template partial for the recording posts to format a recording post using data Keystrokes.JSON. 
-Grayson: 
+Grayson: :b:
