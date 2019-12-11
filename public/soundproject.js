@@ -43,7 +43,7 @@ function playSound(){
       aud3.play();
       echoRouter -= 3;
    }
-   
+
 }
 
 
@@ -53,84 +53,84 @@ var lastActive = "none";
 document.addEventListener('keydown', (e) => {
    if (e.code === "KeyQ"){//1
          if( lastActive != 'KeyQ' ){
-            setSound('audio1');  
+            setSound('audio1');
             lastActive = 'KeyQ';
          }
          playSound();
          document.getElementById("piano1").style.border = "inset";
-   } else if (e.code === "KeyW"){//2 
+   } else if (e.code === "KeyW"){//2
          if( lastActive != 'KeyW'){
-            setSound('audio2');  
+            setSound('audio2');
             lastActive = 'KeyW';
          }
          playSound();
          document.getElementById("piano2").style.border = "inset";
    } else if (e.code === "KeyE"){//3
          if( lastActive != 'KeyE'){
-            setSound('audio3');  
+            setSound('audio3');
             lastActive = 'KeyE';
          }
          playSound();
          document.getElementById("piano3").style.border = "inset";
    } else if (e.code === "KeyR"){//4
          if( lastActive != 'KeyR'){
-            setSound('audio4');  
+            setSound('audio4');
             lastActive = 'KeyR';
          }
          playSound();
          document.getElementById("piano4").style.border = "inset";
    } else if (e.code === "KeyT"){//5
          if( lastActive != 'KeyT'){
-            setSound('audio5');  
+            setSound('audio5');
             lastActive = 'KeyT';
          }
          playSound();
          document.getElementById("piano5").style.border = "inset";
    } else if (e.code === "KeyY"){//6
          if( lastActive != 'KeyY'){
-            setSound('audio6');  
+            setSound('audio6');
             lastActive = 'KeyY';
          }
          playSound();
          document.getElementById("piano6").style.border = "inset";
    } else if (e.code === "KeyU"){//7
          if( lastActive != 'KeyU'){
-            setSound('audio7');  
+            setSound('audio7');
             lastActive = 'KeyU';
          }
          playSound();
          document.getElementById("piano7").style.border = "inset";
    } else if (e.code === "KeyI"){//8
          if( lastActive != 'KeyI'){
-            setSound('audio8');  
+            setSound('audio8');
             lastActive = 'KeyI';
          }
          playSound();
          document.getElementById("piano8").style.border = "inset";
    } else if (e.code === "KeyO"){//9
          if( lastActive != 'KeyO'){
-            setSound('audio9');  
+            setSound('audio9');
             lastActive = 'KeyO';
          }
          playSound();
          document.getElementById("piano9").style.border = "inset";
    } else if (e.code === "KeyP"){//10
          if( lastActive != 'KeyP'){
-            setSound('audio10'); 
+            setSound('audio10');
             lastActive = 'KeyP';
          }
          playSound();
          document.getElementById("piano10").style.border = "inset";
    } else if (e.code === "BracketLeft"){//11
          if( lastActive != 'BracketLeft'){
-            setSound('audio11'); 
+            setSound('audio11');
             lastActive = 'BracketLeft';
          }
          playSound();
          document.getElementById("piano11").style.border = "inset";
    } else if (e.code === "BracketRight"){//11
          if( lastActive != 'BracketRight'){
-            setSound('audio12'); 
+            setSound('audio12');
             lastActive = 'BracketRight';
          }
          playSound();
@@ -142,7 +142,7 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('keyup', (e) => {
    if (e.code === "KeyQ"){//1
          document.getElementById("piano1").style.border = "outset";
-   } else if (e.code === "KeyW"){//2 
+   } else if (e.code === "KeyW"){//2
          document.getElementById("piano2").style.border = "outset";
    } else if (e.code === "KeyE"){//3
          document.getElementById("piano3").style.border = "outset";
@@ -182,10 +182,20 @@ var key10 = document.getElementById('piano10');
 var key11 = document.getElementById('piano11');
 var key12 = document.getElementById('piano12');
 
+var seal = document.getElementById('seal');
+
+seal.addEventListener('mousedown', (e) => {
+   if( lastActive != 'KeyQ' ){
+         setSound('audio1');
+         lastActive = 'KeyQ';
+      }
+      playSound();
+});
+
 key1.addEventListener('mousedown', (e) => {
    key1.style.border = "inset";
    if( lastActive != 'KeyQ' ){
-         setSound('audio1');  
+         setSound('audio1');
          lastActive = 'KeyQ';
       }
       playSound();
@@ -194,7 +204,7 @@ key1.addEventListener('mousedown', (e) => {
 key2.addEventListener('mousedown', (e) => {
    key2.style.border = "inset";
    if( lastActive != 'KeyW' ){
-         setSound('audio2');  
+         setSound('audio2');
          lastActive = 'KeyW';
       }
       playSound();
@@ -203,7 +213,7 @@ key2.addEventListener('mousedown', (e) => {
 key3.addEventListener('mousedown', (e) => {
    key3.style.border = "inset";
    if( lastActive != 'KeyE' ){
-         setSound('audio3');  
+         setSound('audio3');
          lastActive = 'KeyE';
       }
       playSound();
@@ -212,7 +222,7 @@ key3.addEventListener('mousedown', (e) => {
 key4.addEventListener('mousedown', (e) => {
    key4.style.border = "inset";
    if( lastActive != 'KeyR' ){
-         setSound('audio4');  
+         setSound('audio4');
          lastActive = 'KeyR';
       }
       playSound();
@@ -221,7 +231,7 @@ key4.addEventListener('mousedown', (e) => {
 key5.addEventListener('mousedown', (e) => {
    key5.style.border = "inset";
    if( lastActive != 'KeyT' ){
-         setSound('audio5');  
+         setSound('audio5');
          lastActive = 'KeyT';
       }
       playSound();
@@ -230,7 +240,7 @@ key5.addEventListener('mousedown', (e) => {
 key6.addEventListener('mousedown', (e) => {
    key6.style.border = "inset";
    if( lastActive != 'KeyY' ){
-         setSound('audio6');  
+         setSound('audio6');
          lastActive = 'KeyY';
       }
       playSound();
@@ -239,7 +249,7 @@ key6.addEventListener('mousedown', (e) => {
 key7.addEventListener('mousedown', (e) => {
    key7.style.border = "inset";
    if( lastActive != 'KeyU' ){
-         setSound('audio7');  
+         setSound('audio7');
          lastActive = 'KeyU';
       }
       playSound();
@@ -248,7 +258,7 @@ key7.addEventListener('mousedown', (e) => {
 key8.addEventListener('mousedown', (e) => {
    key8.style.border = "inset";
    if( lastActive != 'KeyI' ){
-         setSound('audio8');  
+         setSound('audio8');
          lastActive = 'KeyI';
       }
       playSound();
@@ -257,7 +267,7 @@ key8.addEventListener('mousedown', (e) => {
 key9.addEventListener('mousedown', (e) => {
    key9.style.border = "inset";
    if( lastActive != 'KeyO' ){
-         setSound('audio9');  
+         setSound('audio9');
          lastActive = 'KeyO';
       }
       playSound();
@@ -266,7 +276,7 @@ key9.addEventListener('mousedown', (e) => {
 key10.addEventListener('mousedown', (e) => {
    key10.style.border = "inset";
    if( lastActive != 'KeyP' ){
-         setSound('audio10'); 
+         setSound('audio10');
          lastActive = 'KeyP';
       }
       playSound();
@@ -275,7 +285,7 @@ key10.addEventListener('mousedown', (e) => {
 key11.addEventListener('mousedown', (e) => {
    key11.style.border = "inset";
    if( lastActive != 'BracketLeft' ){
-         setSound('audio11'); 
+         setSound('audio11');
          lastActive = 'BracketLeft';
       }
       playSound();
@@ -284,7 +294,7 @@ key11.addEventListener('mousedown', (e) => {
 key12.addEventListener('mousedown', (e) => {
    key12.style.border = "inset";
    if( lastActive != 'BracketRight' ){
-         setSound('audio12'); 
+         setSound('audio12');
          lastActive = 'BracketRight';
       }
       playSound();
@@ -292,60 +302,60 @@ key12.addEventListener('mousedown', (e) => {
 
 key1.addEventListener('mouseup', (e) => {
    key1.style.border = "outset";
-   
+
 });
 
 key2.addEventListener('mouseup', (e) => {
    key2.style.border = "outset";
-   
+
 });
 
 key3.addEventListener('mouseup', (e) => {
    key3.style.border = "outset";
-   
+
 });
 
 key4.addEventListener('mouseup', (e) => {
    key4.style.border = "outset";
-   
+
 });
 
 key5.addEventListener('mouseup', (e) => {
    key5.style.border = "outset";
-   
+
 });
 
 key6.addEventListener('mouseup', (e) => {
    key6.style.border = "outset";
-   
+
 });
 
 key7.addEventListener('mouseup', (e) => {
    key7.style.border = "outset";
-   
+
 });
 
 key8.addEventListener('mouseup', (e) => {
    key8.style.border = "outset";
-   
+
 });
 
 key9.addEventListener('mouseup', (e) => {
    key9.style.border = "outset";
-   
+
 });
 
 key10.addEventListener('mouseup', (e) => {
    key10.style.border = "outset";
-   
+
 });
 
 key11.addEventListener('mouseup', (e) => {
    key11.style.border = "outset";
-   
+
 });
 
 key12.addEventListener('mouseup', (e) => {
    key12.style.border = "outset";
-   
+
 });
