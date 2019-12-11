@@ -182,16 +182,6 @@ var key10 = document.getElementById('piano10');
 var key11 = document.getElementById('piano11');
 var key12 = document.getElementById('piano12');
 
-var seal = document.getElementById('seal');
-
-seal.addEventListener('mousedown', (e) => {
-   if( lastActive != 'KeyQ' ){
-         setSound('audio1');
-         lastActive = 'KeyQ';
-      }
-      playSound();
-});
-
 key1.addEventListener('mousedown', (e) => {
    key1.style.border = "inset";
    if( lastActive != 'KeyQ' ){
