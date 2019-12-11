@@ -162,7 +162,29 @@ div.button-container {
     align-items: center;
 }
 
+#recordings {
+    width: 75%;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position:relative;
+    //border: solid red 5px;
+    left:15%;
+}
+
 div.instrument-container {
+    display: inline-block;
+    vertical-align: top;
+    height: 200px;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 5px solid #ffffff;
+    border-radius: 3px;
+}
+
+div.recording-container {
     display: inline-block;
     vertical-align: top;
     height: 200px;
