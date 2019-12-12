@@ -85,58 +85,58 @@ var isRecord = 1;
 
 console.log("this section read");
 
-recButton.addEventListener('mousedown', (e) => {
-   console.log("isRecord is " + isRecord);
-   if( isRecord == 1 ){
-      recButton.innerText = "Stop Recording";
-      recordedText = "";
-   } else if( isRecord == 3){
-      recButton.innerText = "Record";
+if(recButton){
+	recButton.addEventListener('mousedown', (e) => {
+	   console.log("isRecord is " + isRecord);
+	   if( isRecord == 1 ){
+		  recButton.innerText = "Stop Recording";
+		  recordedText = "";
+	   } else if( isRecord == 3){
+		  recButton.innerText = "Record";
 
-      //var stringArray = recordedText.split(" ");
+		  var stringArray = recordedText.split(" ");
 
-      //console.log(stringArray);
-      
-      //for(var i = 0; i < stringArray.length - 1; i++){
-      //   stringArray.splice(i,1);
-      //}
-      //stringArray.splice(stringArray.length, 1);
-      //recordedText = stringArray.join(" ");
+		  console.log(stringArray);
+		  
+		  for(var i = 0; i < stringArray.length - 1; i++){
+			 stringArray.splice(i,1);
+		  }
+		  stringArray.splice(stringArray.length, 1);
+		  recordedText = stringArray.join(" ");
 
-      console.log( recordedText );
+		  console.log( recordedText );
 
-      var postRequest = new XMLHttpRequest();
-      var requestURL = '/recordings.html/addRecording';
-      postRequest.open('POST', requestURL);
+		  var postRequest = new XMLHttpRequest();
+		  var requestURL = '/recordings.html/addRecording';
+		  postRequest.open('POST', requestURL);
 
-      var requestBody = JSON.stringify({
-        "recordingsText": recordedText,
-        "instrumentName": recordInstrument
-      });
+		  var requestBody = JSON.stringify({
+			"recordingsText": recordedText,
+			"instrumentName": recordInstrument
+		  });
 
-      console.log("== requestBody:", requestBody);
-      postRequest.setRequestHeader('Content-Type', 'application/json');
+		  console.log("== requestBody:", requestBody);
+		  postRequest.setRequestHeader('Content-Type', 'application/json');
 
-      postRequest.addEventListener('load', function (event) {
-         if (event.target.status !== 200) {
-           var responseBody = event.target.response;
-           alert("Error saving recording on server side: " + responseBody);
-         } else{
-            console.log("sent to server");
-         }
-      });
+		  postRequest.addEventListener('load', function (event) {
+			 if (event.target.status !== 200) {
+			   var responseBody = event.target.response;
+			   alert("Error saving recording on server side: " + responseBody);
+			 } else{
+				console.log("sent to server");
+			 }
+		  });
 
-      postRequest.send(requestBody);
+		  postRequest.send(requestBody);
 
-   }
-   isRecord += 1;
-   if(isRecord == 5){
-         isRecord = 1;
-   }
+	   }
+	   isRecord += 1;
+	   if(isRecord == 5){
+			 isRecord = 1;
+	   }
 
-});
-
-
+	});
+}
 
 var keyQRepeat = 1;
 var keyWRepeat = 1;
@@ -361,99 +361,101 @@ var key2 = document.getElementById('piano2');
 var key3 = document.getElementById('piano3');
 var key4 = document.getElementById('piano4');
 
-key1.addEventListener('mousedown', (e) => {
-   if(mouse1Repeat == 1 || mouse1Repeat == 2){
-      key1.style.border = "inset";
-      if( lastActive != 'KeyQ' ){
-         setSound('audio1');
-         lastActive = 'KeyQ';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "C ";
-      } else if( recordInstrument == "Guitar" ){
-         recordedText += "1 ";
-      } else if( recordInstrument == "Seal" ){
-         recordedText += "GEEEEOOWWWWwwwwBEEAABUUTU ";
-      }
-   }
-   
-});
+if(key1 || key2 && key3 && key4){
+	key1.addEventListener('mousedown', (e) => {
+	   if(mouse1Repeat == 1 || mouse1Repeat == 2){
+		  key1.style.border = "inset";
+		  if( lastActive != 'KeyQ' ){
+			 setSound('audio1');
+			 lastActive = 'KeyQ';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "C ";
+		  } else if( recordInstrument == "Guitar" ){
+			 recordedText += "1 ";
+		  } else if( recordInstrument == "Seal" ){
+			 recordedText += "GEEEEOOWWWWwwwwBEEAABUUTU ";
+		  }
+	   }
+	   
+	});
 
-key2.addEventListener('mousedown', (e) => {
-   if(mouse2Repeat == 1 || mouse2Repeat == 2){
-      key2.style.border = "inset";
-      if( lastActive != 'KeyW' ){
-         setSound('audio2');
-         lastActive = 'KeyW';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "C# ";
-      } else if( recordInstrument == "Guitar" ){
-         recordedText += "2 ";
-      }
-   }
-   
-});
+	key2.addEventListener('mousedown', (e) => {
+	   if(mouse2Repeat == 1 || mouse2Repeat == 2){
+		  key2.style.border = "inset";
+		  if( lastActive != 'KeyW' ){
+			 setSound('audio2');
+			 lastActive = 'KeyW';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "C# ";
+		  } else if( recordInstrument == "Guitar" ){
+			 recordedText += "2 ";
+		  }
+	   }
+	   
+	});
 
-key3.addEventListener('mousedown', (e) => {
-   if(mouse3Repeat == 1 || mouse3Repeat == 2){
-      key3.style.border = "inset";
-      if( lastActive != 'KeyE' ){
-         setSound('audio3');
-         lastActive = 'KeyE';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "D ";
-      } else if( recordInstrument == "Guitar" ){
-         recordedText += "3 ";
-      }
-   }
-   
-});
+	key3.addEventListener('mousedown', (e) => {
+	   if(mouse3Repeat == 1 || mouse3Repeat == 2){
+		  key3.style.border = "inset";
+		  if( lastActive != 'KeyE' ){
+			 setSound('audio3');
+			 lastActive = 'KeyE';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "D ";
+		  } else if( recordInstrument == "Guitar" ){
+			 recordedText += "3 ";
+		  }
+	   }
+	   
+	});
 
-key4.addEventListener('mousedown', (e) => {
-   if(mouse4Repeat == 1 || mouse4Repeat == 2){
-      key4.style.border = "inset";
-      if( lastActive != 'KeyR' ){
-         setSound('audio4');
-         lastActive = 'KeyR';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "D# ";
-      } else if( recordInstrument == "Guitar" ){
-         recordedText += "4 ";
-      }
-   }
-   
-});
+	key4.addEventListener('mousedown', (e) => {
+	   if(mouse4Repeat == 1 || mouse4Repeat == 2){
+		  key4.style.border = "inset";
+		  if( lastActive != 'KeyR' ){
+			 setSound('audio4');
+			 lastActive = 'KeyR';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "D# ";
+		  } else if( recordInstrument == "Guitar" ){
+			 recordedText += "4 ";
+		  }
+	   }
+	   
+	});
 
-key1.addEventListener('mouseup', (e) => {
-   key1.style.border = "outset";
-   mouse1Repeat = 2;
+	key1.addEventListener('mouseup', (e) => {
+	   key1.style.border = "outset";
+	   mouse1Repeat = 2;
 
-});
+	});
 
-key2.addEventListener('mouseup', (e) => {
-   key2.style.border = "outset";
-   mouse2Repeat = 2;
+	key2.addEventListener('mouseup', (e) => {
+	   key2.style.border = "outset";
+	   mouse2Repeat = 2;
 
-});
+	});
 
-key3.addEventListener('mouseup', (e) => {
-   key3.style.border = "outset";
-   mouse3ERepeat = 2;
+	key3.addEventListener('mouseup', (e) => {
+	   key3.style.border = "outset";
+	   mouse3ERepeat = 2;
 
-});
+	});
 
-key4.addEventListener('mouseup', (e) => {
-   key4.style.border = "outset";
-   mouse4Repeat = 2;
+	key4.addEventListener('mouseup', (e) => {
+	   key4.style.border = "outset";
+	   mouse4Repeat = 2;
 
-});
+	});
+}
 
 var key5 = document.getElementById('piano5');
 var key6 = document.getElementById('piano6');
@@ -465,174 +467,176 @@ var key10 = document.getElementById('piano10');
 var key11 = document.getElementById('piano11');
 var key12 = document.getElementById('piano12');
 
+if(key5 && key6 && key7 && key8 && key9 && key10 && key11 && key12){
+	key5.addEventListener('mousedown', (e) => {
+		if(mouse5Repeat == 1 || mouse5Repeat == 2){
+		  key5.style.border = "inset";
+		  if( lastActive != 'KeyT' ){
+			 setSound('audio5');
+			 lastActive = 'KeyT';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "E ";
+		  }
+		}
+	   
+	});
+
+	key6.addEventListener('mousedown', (e) => {
+	   if(mouse6Repeat == 1 || mouse6Repeat == 2){
+		  key6.style.border = "inset";
+		  if( lastActive != 'KeyY' ){
+				setSound('audio6');
+				lastActive = 'KeyY';
+			 }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "F ";
+		  }
+	   }
+	   
+	});
+
+	key7.addEventListener('mousedown', (e) => {
+	   if(mouse7Repeat == 1 || mouse7Repeat == 2){
+		  key7.style.border = "inset";
+		  if( lastActive != 'KeyU' ){
+				setSound('audio7');
+				lastActive = 'KeyU';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "F# ";
+		  }
+	   }
+	   
+	});
+
+	key8.addEventListener('mousedown', (e) => {
+	   if(mouse8Repeat == 1 || mouse8Repeat == 2){
+		  key8.style.border = "inset";
+		  if( lastActive != 'KeyI' ){
+				setSound('audio8');
+				lastActive = 'KeyI';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "G ";
+		  }
+	   }
+	   
+	});
+
+	key9.addEventListener('mousedown', (e) => {
+	   if(mouse9Repeat == 1 || mouse9Repeat == 2){
+		  key9.style.border = "inset";
+		  if( lastActive != 'KeyO' ){
+				setSound('audio9');
+				lastActive = 'KeyO';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "G# ";
+		  }
+	   }
+	   
+	});
+
+	key10.addEventListener('mousedown', (e) => {
+	   if(mouse10Repeat == 1 || mouse10Repeat == 2){
+		  key10.style.border = "inset";
+		  if( lastActive != 'KeyP' ){
+				setSound('audio10');
+				lastActive = 'KeyP';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "A ";
+		  }
+	   }
+	   
+	});
+
+	key11.addEventListener('mousedown', (e) => {
+	   if(mouse11Repeat == 1 || mouse11Repeat == 2){
+		  key11.style.border = "inset";
+		  if( lastActive != 'BracketLeft' ){
+				setSound('audio11');
+				lastActive = 'BracketLeft';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "A# ";
+		  }
+	   }
+	   
+	});
+
+	key12.addEventListener('mousedown', (e) => {
+	   if(mouse12Repeat == 1 || mouse12Repeat == 2){
+		  key12.style.border = "inset";
+		  if( lastActive != 'BracketRight' ){
+				setSound('audio12');
+				lastActive = 'BracketRight';
+		  }
+		  playSound();
+		  if( recordInstrument == "Piano" ){
+			 recordedText += "B ";
+		  }
+	   }
+	   
+	});
+
+	key5.addEventListener('mouseup', (e) => {
+	   key5.style.border = "outset";
+	   mouse5Repeat = 2;
+
+	});
+
+	key6.addEventListener('mouseup', (e) => {
+	   key6.style.border = "outset";
+	   mouse6Repeat = 2;
+
+	});
+
+	key7.addEventListener('mouseup', (e) => {
+	   key7.style.border = "outset";
+	   mouse7Repeat = 2;
+
+	});
+
+	key8.addEventListener('mouseup', (e) => {
+	   key8.style.border = "outset";
+	   mouse8Repeat = 2;
+
+	});
+
+	key9.addEventListener('mouseup', (e) => {
+	   key9.style.border = "outset";
+	   mouse9Repeat = 2;
+
+	});
+
+	key10.addEventListener('mouseup', (e) => {
+	   key10.style.border = "outset";
+	   mouse10Repeat = 2;
+
+	});
+
+	key11.addEventListener('mouseup', (e) => {
+	   key11.style.border = "outset";
+	   mouse11Repeat = 2;
+
+	});
+
+	key12.addEventListener('mouseup', (e) => {
+	   key12.style.border = "outset";
+	   mouse12Repeat = 2;
+
+	});
+}
 
 
-key5.addEventListener('mousedown', (e) => {
-   if(mouse5Repeat == 1 || mouse5Repeat == 2){
-      key5.style.border = "inset";
-      if( lastActive != 'KeyT' ){
-         setSound('audio5');
-         lastActive = 'KeyT';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "E ";
-      }
-   }
-   
-});
-
-key6.addEventListener('mousedown', (e) => {
-   if(mouse6Repeat == 1 || mouse6Repeat == 2){
-      key6.style.border = "inset";
-      if( lastActive != 'KeyY' ){
-            setSound('audio6');
-            lastActive = 'KeyY';
-         }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "F ";
-      }
-   }
-   
-});
-
-key7.addEventListener('mousedown', (e) => {
-   if(mouse7Repeat == 1 || mouse7Repeat == 2){
-      key7.style.border = "inset";
-      if( lastActive != 'KeyU' ){
-            setSound('audio7');
-            lastActive = 'KeyU';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "F# ";
-      }
-   }
-   
-});
-
-key8.addEventListener('mousedown', (e) => {
-   if(mouse8Repeat == 1 || mouse8Repeat == 2){
-      key8.style.border = "inset";
-      if( lastActive != 'KeyI' ){
-            setSound('audio8');
-            lastActive = 'KeyI';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "G ";
-      }
-   }
-   
-});
-
-key9.addEventListener('mousedown', (e) => {
-   if(mouse9Repeat == 1 || mouse9Repeat == 2){
-      key9.style.border = "inset";
-      if( lastActive != 'KeyO' ){
-            setSound('audio9');
-            lastActive = 'KeyO';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "G# ";
-      }
-   }
-   
-});
-
-key10.addEventListener('mousedown', (e) => {
-   if(mouse10Repeat == 1 || mouse10Repeat == 2){
-      key10.style.border = "inset";
-      if( lastActive != 'KeyP' ){
-            setSound('audio10');
-            lastActive = 'KeyP';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "A ";
-      }
-   }
-   
-});
-
-key11.addEventListener('mousedown', (e) => {
-   if(mouse11Repeat == 1 || mouse11Repeat == 2){
-      key11.style.border = "inset";
-      if( lastActive != 'BracketLeft' ){
-            setSound('audio11');
-            lastActive = 'BracketLeft';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "A# ";
-      }
-   }
-   
-});
-
-key12.addEventListener('mousedown', (e) => {
-   if(mouse12Repeat == 1 || mouse12Repeat == 2){
-      key12.style.border = "inset";
-      if( lastActive != 'BracketRight' ){
-            setSound('audio12');
-            lastActive = 'BracketRight';
-      }
-      playSound();
-      if( recordInstrument == "Piano" ){
-         recordedText += "B ";
-      }
-   }
-   
-});
-
-key5.addEventListener('mouseup', (e) => {
-   key5.style.border = "outset";
-   mouse5Repeat = 2;
-
-});
-
-key6.addEventListener('mouseup', (e) => {
-   key6.style.border = "outset";
-   mouse6Repeat = 2;
-
-});
-
-key7.addEventListener('mouseup', (e) => {
-   key7.style.border = "outset";
-   mouse7Repeat = 2;
-
-});
-
-key8.addEventListener('mouseup', (e) => {
-   key8.style.border = "outset";
-   mouse8Repeat = 2;
-
-});
-
-key9.addEventListener('mouseup', (e) => {
-   key9.style.border = "outset";
-   mouse9Repeat = 2;
-
-});
-
-key10.addEventListener('mouseup', (e) => {
-   key10.style.border = "outset";
-   mouse10Repeat = 2;
-
-});
-
-key11.addEventListener('mouseup', (e) => {
-   key11.style.border = "outset";
-   mouse11Repeat = 2;
-
-});
-
-key12.addEventListener('mouseup', (e) => {
-   key12.style.border = "outset";
-   mouse12Repeat = 2;
-
-});
 
 
