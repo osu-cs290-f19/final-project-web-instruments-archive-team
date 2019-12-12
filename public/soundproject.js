@@ -136,9 +136,22 @@ recButton.addEventListener('mousedown', (e) => {
 
 
 
+var keyQRepeat = 1;
+var keyWRepeat = 1;
+var keyERepeat = 1;
+var keyRRepeat = 1;
+var keyTRepeat = 1;
+var keyYRepeat = 1;
+var keyURepeat = 1;
+var keyIRepeat = 1;
+var keyORepeat = 1;
+var keyPRepeat = 1;
+var keyLBRepeat = 1;
+var keyRBRepeat = 1;
 
 document.addEventListener('keydown', (e) => {
-   if (e.code === "KeyQ"){//1
+   if (e.code === "KeyQ" && ( (keyQRepeat == 1) || (keyQRepeat == 2) ) ){//1
+         keyQRepeat = 3;
          if( lastActive != 'KeyQ' ){
             setSound('audio1');
             lastActive = 'KeyQ';
@@ -152,7 +165,8 @@ document.addEventListener('keydown', (e) => {
          } else if( recordInstrument == "Seal" ){
             recordedText += "GEEEEOOWWWWwwwwBEEAABUUTU ";
          }
-   } else if (e.code === "KeyW"){//2
+   } else if (e.code === "KeyW" && ( (keyWRepeat == 1) || (keyWRepeat == 2) ) ){//2
+         keyWRepeat = 3;
          if( lastActive != 'KeyW'){
             setSound('audio2');
             lastActive = 'KeyW';
@@ -164,7 +178,8 @@ document.addEventListener('keydown', (e) => {
          } else if( recordInstrument == "Guitar" ){
             recordedText += "2 ";
          }
-   } else if (e.code === "KeyE"){//3
+   } else if (e.code === "KeyE" && ( (keyERepeat == 1) || (keyERepeat == 2) ) ){//3
+         keyERepeat = 3;
          if( lastActive != 'KeyE'){
             setSound('audio3');
             lastActive = 'KeyE';
@@ -176,7 +191,8 @@ document.addEventListener('keydown', (e) => {
          } else if( recordInstrument == "Guitar" ){
             recordedText += "3 ";
          }
-   } else if (e.code === "KeyR"){//4
+   } else if (e.code === "KeyR" && ( (keyRRepeat == 1) || (keyRRepeat == 2) ) ){//4
+         keyRRepeat = 3;
          if( lastActive != 'KeyR'){
             setSound('audio4');
             lastActive = 'KeyR';
@@ -188,7 +204,8 @@ document.addEventListener('keydown', (e) => {
          } else if( recordInstrument == "Guitar" ){
             recordedText += "4 ";
          }
-   } else if (e.code === "KeyT"){//5
+   } else if (e.code === "KeyT" && ( (keyTRepeat == 1) || (keyTRepeat == 2) ) ){//5
+         keyTRepeat = 3;
          if( lastActive != 'KeyT'){
             setSound('audio5');
             lastActive = 'KeyT';
@@ -198,7 +215,8 @@ document.addEventListener('keydown', (e) => {
          if( recordInstrument == "Piano" ){
             recordedText += "E ";
          }
-   } else if (e.code === "KeyY"){//6
+   } else if (e.code === "KeyY" && ( (keyYRepeat == 1) || (keyYRepeat == 2) ) ){//6
+         keyYRepeat = 3;
          if( lastActive != 'KeyY'){
             setSound('audio6');
             lastActive = 'KeyY';
@@ -208,7 +226,8 @@ document.addEventListener('keydown', (e) => {
          if( recordInstrument == "Piano" ){
             recordedText += "F ";
          }
-   } else if (e.code === "KeyU"){//7
+   } else if (e.code === "KeyU" && ( (keyURepeat == 1) || (keyURepeat == 2) ) ){//7
+         keyURepeat = 3;
          if( lastActive != 'KeyU'){
             setSound('audio7');
             lastActive = 'KeyU';
@@ -218,7 +237,8 @@ document.addEventListener('keydown', (e) => {
          if( recordInstrument == "Piano" ){
             recordedText += "F# ";
          }
-   } else if (e.code === "KeyI"){//8
+   } else if (e.code === "KeyI" && ( (keyIRepeat == 1) || (keyIRepeat == 2) ) ){//8
+         keyIRepeat = 3;
          if( lastActive != 'KeyI'){
             setSound('audio8');
             lastActive = 'KeyI';
@@ -228,7 +248,8 @@ document.addEventListener('keydown', (e) => {
          if( recordInstrument == "Piano" ){
             recordedText += "G ";
          }
-   } else if (e.code === "KeyO"){//9
+   } else if (e.code === "KeyO" && ( (keyORepeat == 1) || (keyORepeat == 2) ) ){//9
+         keyORepeat = 3;
          if( lastActive != 'KeyO'){
             setSound('audio9');
             lastActive = 'KeyO';
@@ -238,7 +259,8 @@ document.addEventListener('keydown', (e) => {
          if( recordInstrument == "Piano" ){
             recordedText += "G# ";
          }
-   } else if (e.code === "KeyP"){//10
+   } else if (e.code === "KeyP" && ( (keyPRepeat == 1) || (keyPRepeat == 2) ) ){//10
+         keyPRepeat = 3;
          if( lastActive != 'KeyP'){
             setSound('audio10');
             lastActive = 'KeyP';
@@ -248,7 +270,8 @@ document.addEventListener('keydown', (e) => {
          if( recordInstrument == "Piano" ){
             recordedText += "A ";
          }
-   } else if (e.code === "BracketLeft"){//11
+   } else if (e.code === "BracketLeft" && ( (keyLBRepeat == 1) || (keyLBRepeat == 2) ) ){//11
+         keyLBRepeat = 3;
          if( lastActive != 'BracketLeft'){
             setSound('audio11');
             lastActive = 'BracketLeft';
@@ -258,7 +281,8 @@ document.addEventListener('keydown', (e) => {
          if( recordInstrument == "Piano" ){
             recordedText += "A# ";
          }
-   } else if (e.code === "BracketRight"){//11
+   } else if (e.code === "BracketRight" && ( (keyRBRepeat == 1) || (keyRBRepeat == 2) ) ){//11
+         keyRBRepeat = 3;
          if( lastActive != 'BracketRight'){
             setSound('audio12');
             lastActive = 'BracketRight';
@@ -275,28 +299,40 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('keyup', (e) => {
    if (e.code === "KeyQ"){//1
          document.getElementById("piano1").style.border = "outset";
+         keyQRepeat = 2;
    } else if (e.code === "KeyW"){//2
          document.getElementById("piano2").style.border = "outset";
+         keyWRepeat = 2;
    } else if (e.code === "KeyE"){//3
          document.getElementById("piano3").style.border = "outset";
+         keyERepeat = 2;
    } else if (e.code === "KeyR"){//4
          document.getElementById("piano4").style.border = "outset";
+         keyRRepeat = 2;
    } else if (e.code === "KeyT"){//5
          document.getElementById("piano5").style.border = "outset";
+         keyTRepeat = 2;
    } else if (e.code === "KeyY"){//6
          document.getElementById("piano6").style.border = "outset";
+         keyYRepeat = 2;
    } else if (e.code === "KeyU"){//7
          document.getElementById("piano7").style.border = "outset";
+         keyURepeat = 2;
    } else if (e.code === "KeyI"){//8
          document.getElementById("piano8").style.border = "outset";
+         keyIRepeat = 2;
    } else if (e.code === "KeyO"){//9
          document.getElementById("piano9").style.border = "outset";
+         keyORepeat = 2;
    } else if (e.code === "KeyP"){//10
          document.getElementById("piano10").style.border = "outset";
+         keyPRepeat = 2;
    } else if (e.code === "BracketLeft"){//11
          document.getElementById("piano11").style.border = "outset";
+         keyLBRepeat = 2;
    } else if (e.code === "BracketRight"){//11
          document.getElementById("piano12").style.border = "outset";
+         keyRBRepeat = 2;
    }
 });
 
