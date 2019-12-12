@@ -92,7 +92,7 @@ recButton.addEventListener('mousedown', (e) => {
       recButton.innerText = "Record";
 
       var stringArray = recordedText.split(" ");
-      
+
       console.log(stringArray);
       
       for(var i = 0; i < stringArray.length - 1; i++){
@@ -150,7 +150,7 @@ document.addEventListener('keydown', (e) => {
          } else if( recordInstrument == "Guitar" ){
             recordedText += "1 ";
          } else if( recordInstrument == "Seal" ){
-            recordedText += "GEEEEOOWWWW BEEAABUUTU ";
+            recordedText += "GEEEEOOWWWWwwwwBEEAABUUTU ";
          }
    } else if (e.code === "KeyW"){//2
          if( lastActive != 'KeyW'){
@@ -305,15 +305,6 @@ var key1 = document.getElementById('piano1');
 var key2 = document.getElementById('piano2');
 var key3 = document.getElementById('piano3');
 var key4 = document.getElementById('piano4');
-var key5 = document.getElementById('piano5');
-var key6 = document.getElementById('piano6');
-
-var key7 = document.getElementById('piano7');
-var key8 = document.getElementById('piano8');
-var key9 = document.getElementById('piano9');
-var key10 = document.getElementById('piano10');
-var key11 = document.getElementById('piano11');
-var key12 = document.getElementById('piano12');
 
 key1.addEventListener('mousedown', (e) => {
    key1.style.border = "inset";
@@ -327,7 +318,7 @@ key1.addEventListener('mousedown', (e) => {
    } else if( recordInstrument == "Guitar" ){
       recordedText += "1 ";
    } else if( recordInstrument == "Seal" ){
-      recordedText += "GEEEEOOWWWW BEEAABUUTU ";
+      recordedText += "GEEEEOOWWWWwwwwBEEAABUUTU ";
    }
 });
 
@@ -372,6 +363,38 @@ key4.addEventListener('mousedown', (e) => {
       recordedText += "4 ";
    }
 });
+
+key1.addEventListener('mouseup', (e) => {
+   key1.style.border = "outset";
+
+});
+
+key2.addEventListener('mouseup', (e) => {
+   key2.style.border = "outset";
+
+});
+
+key3.addEventListener('mouseup', (e) => {
+   key3.style.border = "outset";
+
+});
+
+key4.addEventListener('mouseup', (e) => {
+   key4.style.border = "outset";
+
+});
+
+var key5 = document.getElementById('piano5');
+var key6 = document.getElementById('piano6');
+
+var key7 = document.getElementById('piano7');
+var key8 = document.getElementById('piano8');
+var key9 = document.getElementById('piano9');
+var key10 = document.getElementById('piano10');
+var key11 = document.getElementById('piano11');
+var key12 = document.getElementById('piano12');
+
+
 
 key5.addEventListener('mousedown', (e) => {
    key5.style.border = "inset";
@@ -467,26 +490,6 @@ key12.addEventListener('mousedown', (e) => {
    if( recordInstrument == "Piano" ){
       recordedText += "B ";
    }
-});
-
-key1.addEventListener('mouseup', (e) => {
-   key1.style.border = "outset";
-
-});
-
-key2.addEventListener('mouseup', (e) => {
-   key2.style.border = "outset";
-
-});
-
-key3.addEventListener('mouseup', (e) => {
-   key3.style.border = "outset";
-
-});
-
-key4.addEventListener('mouseup', (e) => {
-   key4.style.border = "outset";
-
 });
 
 key5.addEventListener('mouseup', (e) => {
