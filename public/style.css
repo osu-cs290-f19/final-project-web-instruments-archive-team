@@ -220,7 +220,7 @@ div.recording-container {
 }
 
 .piano-keys {
-	background-color: #00CED1;
+	background-color: #ffffff;
 	border: outset;
 	height: 200px;
 	width: 50px;
@@ -228,8 +228,28 @@ div.recording-container {
 }
 
 .piano-keys-sharp {
-	background-color: rgba(189,200,228,1);
+	background-color: rgb(0,0,0);
 	border: outset;
 	height: 200px;
 	width: 50px;
 }
+
+footer{
+    padding: 100px;
+}
+
+#record-button{
+    border: 1px solid #ff001f;
+    background: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#record-button:hover {
+    background-color: #666;
+}
+
+
