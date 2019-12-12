@@ -1,3 +1,27 @@
+if(document.getElementsByTagName("TITLE")[0].innerText == "Home")
+{
+	var searchText = document.getElementById("search-text");
+	var instruments = document.getElementsByClassName("instrument-container");
+	var searchButton = document.getElementById("filter-update-button");
+
+	searchButton.addEventListener('click', filter);
+}
+
+function filter(event)
+{
+	for(var i=0; i < instruments.length; i++)
+	{
+		if(instruments[i].childNodes[3].childNodes[1].text.toLowerCase().indexOf(searchText.value.toLowerCase()) < 0)
+		{
+			instruments[i].style.display = 'none';
+		}
+		else
+		{
+			instruments[i].style.display= 'inline-block';
+		}
+	}
+}
+
 var aud0;
 var aud1;
 var aud2;
