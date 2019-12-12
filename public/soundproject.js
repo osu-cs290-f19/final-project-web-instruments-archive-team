@@ -90,6 +90,17 @@ recButton.addEventListener('mousedown', (e) => {
       recordedText = "";
    } else if( isRecord == 3){
       recButton.innerText = "Record";
+
+      var stringArray = recordedText.split(" ");
+      
+      console.log(stringArray);
+      
+      for(var i = 0; i < stringArray.length - 1; i++){
+         stringArray.splice(i,1);
+      }
+      stringArray.splice(stringArray.length, 1);
+      recordedText = stringArray.join(" ");
+
       console.log( recordedText );
 
       var postRequest = new XMLHttpRequest();
