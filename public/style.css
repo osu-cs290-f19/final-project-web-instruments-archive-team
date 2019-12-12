@@ -93,6 +93,20 @@ main img{
 	height: 100%;
 }
 
+#header-container {
+	display: flex;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+#title-image-container img {
+	max-width: 60px;
+	max-height: 60px;
+	padding-right: 10px;
+}
+
 label.filter-input-label {
     font-size: 23px;
     color: firebrick;
