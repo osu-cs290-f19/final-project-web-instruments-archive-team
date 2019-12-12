@@ -77,6 +77,55 @@ var recordInstrument = document.getElementsByTagName("TITLE")[0].innerText;
 var lastActive = "none";
 
 
+
+var recButton = document.getElementById('record-button');
+var isRecord = 1;
+
+console.log("this section read");
+
+recButton.addEventListener('mousedown', (e) => {
+   console.log("isRecord is " + isRecord);
+   if( isRecord == 1 ){
+      recButton.innerText = "Stop Recording";
+      recordedText = "";
+   } else if( isRecord == 3){
+      recButton.innerText = "Record";
+      console.log( recordedText );
+
+      var postRequest = new XMLHttpRequest();
+      var requestURL = '/recordings.html/addRecording';
+      postRequest.open('POST', requestURL);
+
+      var requestBody = JSON.stringify({
+        "recordingsText": recordedText,
+        "instrumentName": recordInstrument
+      });
+
+      console.log("== requestBody:", requestBody);
+      postRequest.setRequestHeader('Content-Type', 'application/json');
+
+      postRequest.addEventListener('load', function (event) {
+         if (event.target.status !== 200) {
+           var responseBody = event.target.response;
+           alert("Error saving recording on server side: " + responseBody);
+         } else{
+            console.log("sent to server");
+         }
+      });
+
+      postRequest.send(requestBody);
+
+   }
+   isRecord += 1;
+   if(isRecord == 5){
+         isRecord = 1;
+   }
+
+});
+
+
+
+
 document.addEventListener('keydown', (e) => {
    if (e.code === "KeyQ"){//1
          if( lastActive != 'KeyQ' ){
@@ -85,7 +134,13 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano1").style.border = "inset";
-         recordedText += "Q ";
+         if( recordInstrument == "Piano" ){
+            recordedText += "C ";
+         } else if( recordInstrument == "Guitar" ){
+            recordedText += "1 ";
+         } else if( recordInstrument == "Seal" ){
+            recordedText += "GEEEEOOWWWW BEEAABUUTU ";
+         }
    } else if (e.code === "KeyW"){//2
          if( lastActive != 'KeyW'){
             setSound('audio2');
@@ -93,6 +148,11 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano2").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "C# ";
+         } else if( recordInstrument == "Guitar" ){
+            recordedText += "2 ";
+         }
    } else if (e.code === "KeyE"){//3
          if( lastActive != 'KeyE'){
             setSound('audio3');
@@ -100,6 +160,11 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano3").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "D ";
+         } else if( recordInstrument == "Guitar" ){
+            recordedText += "3 ";
+         }
    } else if (e.code === "KeyR"){//4
          if( lastActive != 'KeyR'){
             setSound('audio4');
@@ -107,6 +172,11 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano4").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "D# ";
+         } else if( recordInstrument == "Guitar" ){
+            recordedText += "4 ";
+         }
    } else if (e.code === "KeyT"){//5
          if( lastActive != 'KeyT'){
             setSound('audio5');
@@ -114,6 +184,9 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano5").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "E ";
+         }
    } else if (e.code === "KeyY"){//6
          if( lastActive != 'KeyY'){
             setSound('audio6');
@@ -121,6 +194,9 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano6").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "F ";
+         }
    } else if (e.code === "KeyU"){//7
          if( lastActive != 'KeyU'){
             setSound('audio7');
@@ -128,6 +204,9 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano7").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "F# ";
+         }
    } else if (e.code === "KeyI"){//8
          if( lastActive != 'KeyI'){
             setSound('audio8');
@@ -135,6 +214,9 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano8").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "G ";
+         }
    } else if (e.code === "KeyO"){//9
          if( lastActive != 'KeyO'){
             setSound('audio9');
@@ -142,6 +224,9 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano9").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "G# ";
+         }
    } else if (e.code === "KeyP"){//10
          if( lastActive != 'KeyP'){
             setSound('audio10');
@@ -149,6 +234,9 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano10").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "A ";
+         }
    } else if (e.code === "BracketLeft"){//11
          if( lastActive != 'BracketLeft'){
             setSound('audio11');
@@ -156,6 +244,9 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano11").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "A# ";
+         }
    } else if (e.code === "BracketRight"){//11
          if( lastActive != 'BracketRight'){
             setSound('audio12');
@@ -163,6 +254,9 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano12").style.border = "inset";
+         if( recordInstrument == "Piano" ){
+            recordedText += "B ";
+         }
    }
 });
 
@@ -213,46 +307,71 @@ var key12 = document.getElementById('piano12');
 key1.addEventListener('mousedown', (e) => {
    key1.style.border = "inset";
    if( lastActive != 'KeyQ' ){
-         setSound('audio1');
-         lastActive = 'KeyQ';
-      }
-      playSound();
+      setSound('audio1');
+      lastActive = 'KeyQ';
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "C ";
+   } else if( recordInstrument == "Guitar" ){
+      recordedText += "1 ";
+   } else if( recordInstrument == "Seal" ){
+      recordedText += "GEEEEOOWWWW BEEAABUUTU ";
+   }
 });
 
 key2.addEventListener('mousedown', (e) => {
    key2.style.border = "inset";
    if( lastActive != 'KeyW' ){
-         setSound('audio2');
-         lastActive = 'KeyW';
-      }
-      playSound();
+      setSound('audio2');
+      lastActive = 'KeyW';
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "C# ";
+   } else if( recordInstrument == "Guitar" ){
+      recordedText += "2 ";
+   }
 });
 
 key3.addEventListener('mousedown', (e) => {
    key3.style.border = "inset";
    if( lastActive != 'KeyE' ){
-         setSound('audio3');
-         lastActive = 'KeyE';
-      }
-      playSound();
+      setSound('audio3');
+      lastActive = 'KeyE';
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "D ";
+   } else if( recordInstrument == "Guitar" ){
+      recordedText += "3 ";
+   }
 });
 
 key4.addEventListener('mousedown', (e) => {
    key4.style.border = "inset";
    if( lastActive != 'KeyR' ){
-         setSound('audio4');
-         lastActive = 'KeyR';
-      }
-      playSound();
+      setSound('audio4');
+      lastActive = 'KeyR';
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "D# ";
+   } else if( recordInstrument == "Guitar" ){
+      recordedText += "4 ";
+   }
 });
 
 key5.addEventListener('mousedown', (e) => {
    key5.style.border = "inset";
    if( lastActive != 'KeyT' ){
-         setSound('audio5');
-         lastActive = 'KeyT';
-      }
-      playSound();
+      setSound('audio5');
+      lastActive = 'KeyT';
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "E ";
+   }
 });
 
 key6.addEventListener('mousedown', (e) => {
@@ -261,7 +380,10 @@ key6.addEventListener('mousedown', (e) => {
          setSound('audio6');
          lastActive = 'KeyY';
       }
-      playSound();
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "F ";
+   }
 });
 
 key7.addEventListener('mousedown', (e) => {
@@ -269,8 +391,11 @@ key7.addEventListener('mousedown', (e) => {
    if( lastActive != 'KeyU' ){
          setSound('audio7');
          lastActive = 'KeyU';
-      }
-      playSound();
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "F# ";
+   }
 });
 
 key8.addEventListener('mousedown', (e) => {
@@ -278,8 +403,11 @@ key8.addEventListener('mousedown', (e) => {
    if( lastActive != 'KeyI' ){
          setSound('audio8');
          lastActive = 'KeyI';
-      }
-      playSound();
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "G ";
+   }
 });
 
 key9.addEventListener('mousedown', (e) => {
@@ -287,8 +415,11 @@ key9.addEventListener('mousedown', (e) => {
    if( lastActive != 'KeyO' ){
          setSound('audio9');
          lastActive = 'KeyO';
-      }
-      playSound();
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "G# ";
+   }
 });
 
 key10.addEventListener('mousedown', (e) => {
@@ -296,8 +427,11 @@ key10.addEventListener('mousedown', (e) => {
    if( lastActive != 'KeyP' ){
          setSound('audio10');
          lastActive = 'KeyP';
-      }
-      playSound();
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "A ";
+   }
 });
 
 key11.addEventListener('mousedown', (e) => {
@@ -305,8 +439,11 @@ key11.addEventListener('mousedown', (e) => {
    if( lastActive != 'BracketLeft' ){
          setSound('audio11');
          lastActive = 'BracketLeft';
-      }
-      playSound();
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "A# ";
+   }
 });
 
 key12.addEventListener('mousedown', (e) => {
@@ -314,8 +451,11 @@ key12.addEventListener('mousedown', (e) => {
    if( lastActive != 'BracketRight' ){
          setSound('audio12');
          lastActive = 'BracketRight';
-      }
-      playSound();
+   }
+   playSound();
+   if( recordInstrument == "Piano" ){
+      recordedText += "B ";
+   }
 });
 
 key1.addEventListener('mouseup', (e) => {
@@ -378,47 +518,4 @@ key12.addEventListener('mouseup', (e) => {
 
 });
 
-
-var recButton = document.getElementById('record-button');
-var isRecord = 1;
-
-recButton.addEventListener('mousedown', (e) => {
-   console.log("isRecord is " + isRecord);
-   if( isRecord == 1 ){
-      recButton.innerText = "Stop Recording";
-      recordedText = "";
-   } else if( isRecord == 3){
-      recButton.innerText = "Record";
-      console.log( recordedText );
-
-      var postRequest = new XMLHttpRequest();
-      var requestURL = '/recordings.html/addRecording';
-      postRequest.open('POST', requestURL);
-
-      var requestBody = JSON.stringify({
-        "recordingsText": recordedText,
-        "instrumentName": recordInstrument
-      });
-
-      console.log("== requestBody:", requestBody);
-      postRequest.setRequestHeader('Content-Type', 'application/json');
-
-      postRequest.addEventListener('load', function (event) {
-         if (event.target.status !== 200) {
-           var responseBody = event.target.response;
-           alert("Error saving recording on server side: " + responseBody);
-         } else{
-            console.log("sent to server");
-         }
-      });
-
-      postRequest.send(requestBody);
-
-   }
-   isRecord += 1;
-   if(isRecord == 5){
-         isRecord = 1;
-   }
-
-});
 
