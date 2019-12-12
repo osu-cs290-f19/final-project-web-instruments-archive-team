@@ -1,3 +1,14 @@
-{
-
-}
+[
+	{
+		"recordingsText": "1 2 3 4",
+		"instrumentName": "Guitar"
+	},
+	{
+		"recordingsText": "CS F G",
+		"instrumentName": "Piano"
+	},
+	{
+		"recordingsText": "BUUUHHH",
+		"instrumentName": "Seal"
+	}
+]
