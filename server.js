@@ -2,7 +2,6 @@ var path = require('path');
 var fs = require('fs');
 var express = require('express');
 var exphbs = require('express-handlebars');
-var instrumentData = require('./instrumentData.json');
 var recordingsData = require('./recordingsData.json');
 var bodyParser = require('body-parser');
 
@@ -54,11 +53,14 @@ app.get('/:page', function(req, res, next) {
 });
 
 app.post('/recordings.html/addRecording', function(req, res, next) {
-	if(req.body && req.body.recording){
-			recordingsData.recordings.push({
-				recording: req.body.recording
+	console.log("received post request on server");
+	if(req.body && req.body.recordingsText && req.body.instrumentName){
+			recordingsData.push({
+				recordingsText: req.body.recordingsText,
+				instrumentName: req.body.instrumentName
 			});
 	}
+	console.log("if statement passed");
 	fs.writeFile(__dirname + '/recordingsData.json', JSON.stringify(recordingsData, 2, null), 
 	function(err) {
 			if(!err) {
@@ -67,6 +69,7 @@ app.post('/recordings.html/addRecording', function(req, res, next) {
 					res.status(500).send("Failed to write data on server side");
 			}
 	});
+
 });
 
 app.get('*', function (req, res) {

@@ -71,8 +71,11 @@ function playSound(){
 }
 
 
+var recordedText = "";
+var recordInstrument = document.getElementsByTagName("TITLE")[0].innerText;
 
 var lastActive = "none";
+
 
 document.addEventListener('keydown', (e) => {
    if (e.code === "KeyQ"){//1
@@ -82,6 +85,7 @@ document.addEventListener('keydown', (e) => {
          }
          playSound();
          document.getElementById("piano1").style.border = "inset";
+         recordedText += "Q ";
    } else if (e.code === "KeyW"){//2
          if( lastActive != 'KeyW'){
             setSound('audio2');
@@ -373,3 +377,48 @@ key12.addEventListener('mouseup', (e) => {
    key12.style.border = "outset";
 
 });
+
+
+var recButton = document.getElementById('record-button');
+var isRecord = 1;
+
+recButton.addEventListener('mousedown', (e) => {
+   console.log("isRecord is " + isRecord);
+   if( isRecord == 1 ){
+      recButton.innerText = "Stop Recording";
+      recordedText = "";
+   } else if( isRecord == 3){
+      recButton.innerText = "Record";
+      console.log( recordedText );
+
+      var postRequest = new XMLHttpRequest();
+      var requestURL = '/recordings.html/addRecording';
+      postRequest.open('POST', requestURL);
+
+      var requestBody = JSON.stringify({
+        "recordingsText": recordedText,
+        "instrumentName": recordInstrument
+      });
+
+      console.log("== requestBody:", requestBody);
+      postRequest.setRequestHeader('Content-Type', 'application/json');
+
+      postRequest.addEventListener('load', function (event) {
+         if (event.target.status !== 200) {
+           var responseBody = event.target.response;
+           alert("Error saving recording on server side: " + responseBody);
+         } else{
+            console.log("sent to server");
+         }
+      });
+
+      postRequest.send(requestBody);
+
+   }
+   isRecord += 1;
+   if(isRecord == 5){
+         isRecord = 1;
+   }
+
+});
+
