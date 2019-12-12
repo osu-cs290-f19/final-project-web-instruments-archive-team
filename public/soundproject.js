@@ -4,11 +4,13 @@ if(document.getElementsByTagName("TITLE")[0].innerText == "Home")
 	var instruments = document.getElementsByClassName("instrument-container");
 	var searchButton = document.getElementById("filter-update-button");
 
+	console.log("setting up search button");
 	searchButton.addEventListener('click', filter);
 }
 
 function filter(event)
 {
+	console.log('being clicked');
 	for(var i=0; i < instruments.length; i++)
 	{
 		if(instruments[i].childNodes[3].childNodes[1].text.toLowerCase().indexOf(searchText.value.toLowerCase()) < 0)

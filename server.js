@@ -17,6 +17,11 @@ app.use(express.static('public'));
 
 //app.engine('handlebars', exphbs());
 //app.set('view engine', 'handlebars');
+app.get('', function (req, res){
+	res.status(200).render('index', {
+			titleText: "Home"
+	});
+});
 
 app.get('/', function (req, res) {
 	res.status(200).render('index');
