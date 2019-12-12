@@ -27,18 +27,27 @@ app.get('/:page', function(req, res, next) {
 	var page = req.params.page.toLowerCase();
 	console.log("Page:", page);
 	if(page == "index.html" || page == ''){
-		res.status(200).render('index');
+		res.status(200).render('index', {
+			titleText: "Home"
+		});
 	}else if(page == "recordings.html"){
-			console.log("RecordingsData:", recordingsData); 
-			res.status(200).render('recordings', {
-				recordingsData: recordingsData
-			});
+			//console.log("RecordingsData:", recordingsData); 
+		res.status(200).render('recordings', {
+			recordingsData: recordingsData,
+			titleText: "Recordings"
+		});
 	}else if(page == "guitar.html") {
-			res.status(200).render('guitar');
+			res.status(200).render('guitar', {
+			titleText: "Guitar"
+		});
 	}else if(page == "piano.html") {
-			res.status(200).render('piano');
+			res.status(200).render('piano', {
+			titleText: "Piano"
+		});
 	}else if(page == "seal.html") {
-			res.status(200).render('seal');
+			res.status(200).render('seal', {
+			titleText: "Seal"
+		});
 	}else{
 		next();
 	}
@@ -62,7 +71,9 @@ app.post('/recordings.html/addRecording', function(req, res, next) {
 
 app.get('*', function (req, res) {
     console.log('404 error');
-    res.status(404).render('404');
+    res.status(404).render('404', {
+			titleText: "404"
+		});
 });
 
 app.listen(port, function () {
